@@ -1,5 +1,5 @@
 import axios from 'axios';
-const AxiosClient = baseURL => {
+const AxiosClient = (baseURL: string) => {
   return axios.create({
     baseURL: baseURL,
     timeout: 30000,
