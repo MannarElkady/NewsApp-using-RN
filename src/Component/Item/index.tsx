@@ -1,32 +1,19 @@
-import {StyleSheet, View} from 'react-native';
+import {Image, TouchableWithoutFeedback, Text, View} from 'react-native';
 import React from 'react';
+import {NewItemTileModel} from '../../Types';
+import styles from './style';
 
-const Item = ({item: {}}) => {
+interface Props {
+  item: NewItemTileModel;
+}
+
+const Item = ({item}: Props) => {
   return (
-    <View style={{position: 'relative', zIndex: 0, backgroundColor: 'grey'}}>
-      <View style={styles.itemContainer} />
+    <View style={styles.itemContainer}>
+      <Image source={{uri: item.urlToImage}} style={styles.imageContainer} />
+      <Text style={styles.textstyle}>{item.title}</Text>
     </View>
   );
 };
 
 export default Item;
-
-const styles = StyleSheet.create({
-  itemContainer: {
-    backgroundColor: 'white',
-    marginVertical: 10,
-    borderRadius: 20,
-    padding: 10,
-    zIndex: 1,
-    elevation: 1,
-  },
-  textsViewContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    zIndex: 2,
-    elevation: 2,
-  },
-  textstyle: {color: 'black', fontSize: 21},
-  descriptionstyle: {color: 'grey', fontSize: 18, flex: 2, margin: 5},
-});
