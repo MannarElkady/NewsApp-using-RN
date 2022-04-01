@@ -1,29 +1,35 @@
 import {useState, useEffect} from 'react';
-import {getData} from './axiosAPIMethods';
+import {getData, cancelSource} from './axiosAPIMethods';
 import {AxiosInstance} from 'axios';
 
-const useGetHandler = (url: string, apiClient: AxiosInstance) => {
+const useGetHandler = (
+  url: string,
+  apiClient: AxiosInstance,
+  successCallback?: (data: any) => void,
+  failureCallback?: (error: any) => void,
+) => {
   const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const getStatus = (status: Number) =>
-    status === 200 ? 'success' : 'failure';
+  const [status, setStatus] = useState('loading');
 
   useEffect(() => {
     getData(apiClient, url)
       .then(response => {
-        const status = getStatus(response.status);
-        const responseData = Object.assign({status: status}, response.data);
+        let responseData = response.data;
         setData(responseData);
-        setIsLoading(false);
+        setStatus('success');
+        successCallback?.(responseData);
       })
       .catch(reason => {
-        const responseData = Object.assign({status: 'failure'}, reason);
-        setData(responseData);
-        setIsLoading(false);
+        setData(reason?.response?.data || reason);
+        setStatus('failed');
+        failureCallback?.(reason);
       });
+
+    return () => {
+      cancelSource.cancel();
+    };
   }, [apiClient, url]);
-  return [data, isLoading];
+  return [data, status];
 };
 
 export default useGetHandler;
