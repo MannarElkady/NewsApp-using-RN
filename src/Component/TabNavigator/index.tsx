@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import TabBar from '../TabBar';
 import {Home, Setting} from '../../Screens';
 import styles from './style';
+import Images from '../../Images';
 
 const TabNavigator = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -17,7 +18,10 @@ const TabNavigator = () => {
         {
           <TabBar
             key={'tabBar'}
-            tabBarItems={['NewsFeed', 'Setting']}
+            tabBarItems={[
+              {name: 'NewsFeed', icon: Images.newsFeedIcon},
+              {name: 'Setting', icon: Images.settingIcon},
+            ]}
             didSelectTabIndex={didSelectTabIndex}
           />
         }

@@ -20,6 +20,12 @@ const styles = StyleSheet.create({
     fontSize: 21,
     fontWeight: selectedIndex === index ? 'bold' : '100',
   }),
+
+  tabBarIcon: {
+    width: 26,
+    height: '100%',
+    resizeMode: 'contain',
+  },
 });
 
 export default styles;

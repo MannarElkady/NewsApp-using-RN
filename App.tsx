@@ -20,7 +20,6 @@ const App = () => {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-    marginBottom: 10,
   },
 });
 
