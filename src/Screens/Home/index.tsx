@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, ActivityIndicator} from 'react-native';
+import {StyleSheet, ActivityIndicator} from 'react-native';
 import NewsList from '../../Component/NewsList';
 import SearchBar from '../../Component/Search';
 import ServiceFailedComponent from '../../Component/ServiceFailedComponent';
 import {useAppSelector} from '../../Redux/store';
-import useGetNews from './useGetNews';
 
-const Home = () => {
+interface Props {
+  status: string;
+}
+
+const Home = ({status}: Props) => {
   // get data from store
   let savedDataState = useAppSelector(state => state.newsFeedReducer.data);
-  const [status] = useGetNews();
   const [searchPhrase, setSearchPhrase] = useState('');
   const [clicked, setClicked] = useState(false);
   return (
@@ -24,7 +26,11 @@ const Home = () => {
             searchWord={searchPhrase}
             setSearchWord={setSearchPhrase}
           />
-          <NewsList data={savedDataState} />
+          <NewsList
+            data={savedDataState.filter(item =>
+              item.title.toLowerCase().includes(searchPhrase.toLowerCase()),
+            )}
+          />
         </>
       ) : (
         <ServiceFailedComponent />

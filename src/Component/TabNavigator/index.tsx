@@ -4,13 +4,16 @@ import TabBar from '../TabBar';
 import {Home, Setting} from '../../Screens';
 import styles from './style';
 import Images from '../../Images';
+import useGetNews from '../../Screens/Home/useGetNews';
 
 const TabNavigator = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const didSelectTabIndex = (index: React.SetStateAction<number>) => {
     setSelectedTab(index);
   };
-  const tabsViews = [<Home />, <Setting />];
+
+  const [status] = useGetNews();
+  const tabsViews = [<Home status={status} />, <Setting />];
   return (
     <>
       <View style={styles.pageStyle}>{tabsViews[selectedTab]}</View>
