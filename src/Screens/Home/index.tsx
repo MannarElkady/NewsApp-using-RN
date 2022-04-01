@@ -1,6 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, View, ActivityIndicator} from 'react-native';
+import {StyleSheet, View, ActivityIndicator} from 'react-native';
 import NewsList from '../../Component/NewsList';
+import ServiceFailedComponent from '../../Component/ServiceFailedComponent';
 import useGetNews from './useGetNews';
 
 const Home = () => {
@@ -12,9 +13,7 @@ const Home = () => {
       ) : (
         <View style={{flex: 1}}>
           {data?.status === 'failure' ? (
-            <Text style={{fontSize: 21, flex: 1, justifyContent: 'center'}}>
-              Service Failed
-            </Text>
+            <ServiceFailedComponent />
           ) : (
             <NewsList data={data.articles} />
           )}
