@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import NewsDetails from '../Component/NewsDetails';
 import TabNavigator from '../Component/TabNavigator';
+import {NavigationScreens} from '../Types';
 
 const Navigation = () => {
   const MainStack = createNativeStackNavigator();
@@ -10,11 +11,14 @@ const Navigation = () => {
     <NavigationContainer>
       <MainStack.Navigator>
         <MainStack.Screen
-          name="TabNavigator"
+          name={NavigationScreens.TabNavigator}
           component={TabNavigator}
           options={{headerShown: false}}
         />
-        <MainStack.Screen name="DetailsPage" component={NewsDetails} />
+        <MainStack.Screen
+          name={NavigationScreens.detailsPage}
+          component={NewsDetails}
+        />
       </MainStack.Navigator>
     </NavigationContainer>
   );
