@@ -1,9 +1,21 @@
-import {AxiosInstance} from 'axios';
+import axios, {
+  AxiosInstance,
+  CancelTokenSource,
+  CancelTokenStatic,
+} from 'axios';
 
-const getData = async (axiosClient: AxiosInstance, url: string) =>
-  await axiosClient.get(url);
+let CancelToken: CancelTokenStatic;
+var cancelSource: CancelTokenSource;
+const getData = async (axiosClient: AxiosInstance, url: string) => {
+  CancelToken = axios.CancelToken;
+  cancelSource = CancelToken.source();
+  return await axiosClient.get(url, {cancelToken: cancelSource.token});
+};
 
-const postData = async (axiosClient: AxiosInstance, url: string, data: any) =>
-  await axiosClient.post(url, data);
+const postData = async (axiosClient: AxiosInstance, url: string, data: any) => {
+  CancelToken = axios.CancelToken;
+  cancelSource = CancelToken.source();
+  return await axiosClient.post(url, data, {cancelToken: cancelSource.token});
+};
 
-export {getData, postData};
+export {getData, postData, cancelSource};
