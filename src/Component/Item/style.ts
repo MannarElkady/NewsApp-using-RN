@@ -4,7 +4,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
-    height: 250,
+    height: 350,
     shadowColor: Colors.shadow,
     shadowOffset: {width: 15, height: 15},
     shadowOpacity: 0.3,
