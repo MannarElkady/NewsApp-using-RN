@@ -2,20 +2,23 @@ import {useState, useEffect} from 'react';
 import {getData} from './axiosAPIMethods';
 import {AxiosInstance} from 'axios';
 
-const useGetHandler = (apiClient: AxiosInstance, url: string) => {
-  const [data, setData] = useState([{state: 'undefined'}]);
+const useGetHandler = (url: string, apiClient: AxiosInstance) => {
+  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const getStatus = (status: Number) =>
+    status === 200 ? 'success' : 'failure';
+
   useEffect(() => {
-    let responseData;
     getData(apiClient, url)
       .then(response => {
-        responseData = [{state: 'success'}, ...response.data];
+        const status = getStatus(response.status);
+        const responseData = Object.assign({status: status}, response.data);
         setData(responseData);
         setIsLoading(false);
       })
       .catch(reason => {
-        responseData = [{state: 'failed'}, ...reason];
+        const responseData = Object.assign({status: 'failure'}, reason);
         setData(responseData);
         setIsLoading(false);
       });
