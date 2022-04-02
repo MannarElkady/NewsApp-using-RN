@@ -1,16 +1,11 @@
 import {useMemo} from 'react';
-import {setNews} from '../../Redux/Slicers/NewsListReducer';
-import {useAppDispatch} from '../../Redux/store';
 import {AxiosClient, useGetHandler} from '../../Service';
 import {DomainConstants} from '../../Types';
 
-const useGetNews = () => {
-  let dispatch = useAppDispatch();
-  //save news data to redux
-  const successCallback = (data: any) => {
-    dispatch(setNews(data.articles));
-  };
-
+const useGetNews = (
+  successCallback?: (data: any) => void,
+  failureCallback?: (error: any) => void,
+) => {
   let baseURL = DomainConstants.baseURL;
   var client = useMemo(() => {
     let params = {
@@ -19,12 +14,13 @@ const useGetNews = () => {
     };
     return AxiosClient(baseURL, params);
   }, [baseURL]);
-  const [, status] = useGetHandler(
+  const [, status, refetch] = useGetHandler(
     DomainConstants.postsURL,
     client,
     successCallback,
+    failureCallback,
   );
-  return [status];
+  return [status, refetch];
 };
 
 export default useGetNews;

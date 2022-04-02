@@ -1,19 +1,26 @@
 import {FlatList, RefreshControl, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import Item from '../../Component/Item';
 import {NewItemTileModel} from '../../Types';
-import useGetNews from '../../Screens/Home/useGetNews';
 
 interface Props {
   data: NewItemTileModel[];
   style: any;
+  refreshStatus: any;
+  setRefreshStatus: Dispatch<SetStateAction<boolean>>;
+  refreshGetNews: any;
 }
 
-const NewsList = ({data, style}: Props) => {
-  const [shouldRefresh, setShouldRefresh] = useState(false);
+const NewsList = ({
+  data,
+  style,
+  refreshStatus,
+  setRefreshStatus,
+  refreshGetNews,
+}: Props) => {
   const refreshAction = () => {
-    setShouldRefresh(true);
-    setShouldRefresh(false);
+    setRefreshStatus(true);
+    refreshGetNews();
   };
 
   return (
@@ -21,7 +28,7 @@ const NewsList = ({data, style}: Props) => {
       <FlatList
         refreshControl={
           <RefreshControl
-            refreshing={shouldRefresh}
+            refreshing={refreshStatus}
             onRefresh={refreshAction}
           />
         }

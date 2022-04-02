@@ -10,6 +10,11 @@ const useGetHandler = (
 ) => {
   const [data, setData] = useState(null);
   const [status, setStatus] = useState('loading');
+  const [refetchCounter, setRefetchCounter] = useState(0);
+
+  const refetch = () => {
+    setRefetchCounter(counter => counter + 1);
+  };
 
   useEffect(() => {
     getData(apiClient, url)
@@ -28,8 +33,10 @@ const useGetHandler = (
     return () => {
       cancelSource.cancel();
     };
-  }, [apiClient, url]);
-  return [data, status];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refetchCounter, apiClient, url]);
+
+  return [data, status, refetch];
 };
 
 export default useGetHandler;

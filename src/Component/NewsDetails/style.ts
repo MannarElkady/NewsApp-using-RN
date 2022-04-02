@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   imageContainer: {
     width: '100%',
-    height: '30%',
+    height: '50%',
     zIndex: 1,
     elevation: 1,
     resizeMode: 'stretch',

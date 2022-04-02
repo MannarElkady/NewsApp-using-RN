@@ -9,7 +9,6 @@ export type Props = {
 
 const TabBar: React.FC<Props> = ({tabBarItems, didSelectTabIndex}) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log(selectedIndex);
 
   const textBarComponent = (item: any, index: Number) => (
     <Text style={styles.tabBarItemText(selectedIndex, index)}>{item.name}</Text>
@@ -27,7 +26,7 @@ const TabBar: React.FC<Props> = ({tabBarItems, didSelectTabIndex}) => {
             {selectedIndex !== index ? (
               textBarComponent(item, index)
             ) : (
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={styles.selectedTabBar}>
                 <Image source={item.icon} style={styles.tabBarIcon} />
                 {textBarComponent(item, index)}
               </View>
