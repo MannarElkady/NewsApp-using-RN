@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     width: '90%',
   },
-  searchIcon: {marginLeft: 1, width: 20, resizeMode: 'contain'},
+  searchIcon: {marginLeft: 1, width: 20, height: 20, resizeMode: 'contain'},
 });
 
 export default styles;

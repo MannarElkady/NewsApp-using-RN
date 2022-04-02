@@ -30,7 +30,7 @@ const SearchBar = ({clicked, searchWord, setSearchWord, setClicked}) => {
         {/* cross Icon, depending on whether the search bar is clicked or not */}
         {clicked && (
           <Pressable onPress={() => setSearchWord('')}>
-            <Image source={Images.crossImg} style={styles.searchIcon} />
+            <Image source={Images.crossIcon} style={styles.searchIcon} />
           </Pressable>
         )}
       </View>

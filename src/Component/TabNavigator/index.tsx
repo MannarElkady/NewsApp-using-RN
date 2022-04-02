@@ -13,7 +13,10 @@ const TabNavigator = () => {
   };
 
   const [status] = useGetNews();
-  const tabsViews = [<Home status={status} />, <Setting />];
+  const tabsViews = [
+    <Home status={status} style={styles.pageStyle} />,
+    <Setting />,
+  ];
   return (
     <>
       <View style={styles.pageStyle}>{tabsViews[selectedTab]}</View>

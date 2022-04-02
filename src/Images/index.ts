@@ -2,7 +2,7 @@ const Images = {
   newsFeedIcon: require('../Assets/home.png'),
   settingIcon: require('../Assets/setting.png'),
   searchIcon: require('../Assets/searchIcon.png'),
-  crossImg: require('../Assets/crossImg.png'),
+  crossIcon: require('../Assets/crossIcon.png'),
 };
 
 export default Images;
