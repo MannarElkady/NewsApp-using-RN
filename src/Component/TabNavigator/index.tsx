@@ -6,7 +6,7 @@ import styles from './style';
 import Images from '../../Images';
 import useGetNews from '../../Screens/Home/useGetNews';
 import {setNews} from '../../Redux/Slicers/NewsListReducer';
-import {useAppDispatch, useAppSelector} from '../../Redux/store';
+import {useAppDispatch} from '../../Redux/store';
 
 const TabNavigator = () => {
   const [selectedTab, setSelectedTab] = useState(0);

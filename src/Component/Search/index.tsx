@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import styles from './styles';
 import {
   TextInput,
@@ -10,14 +10,19 @@ import {
 } from 'react-native';
 import Images from '../../Images';
 
-const SearchBar = ({clicked, searchWord, setSearchWord, setClicked}) => {
+interface Props {
+  clicked: boolean;
+  searchWord: string;
+  setSearchWord: Dispatch<SetStateAction<string>>;
+  setClicked: Dispatch<SetStateAction<boolean>>;
+}
+
+const SearchBar = ({clicked, searchWord, setSearchWord, setClicked}: Props) => {
   return (
     <View style={styles.container}>
       <View
         style={clicked ? styles.searchBarClicked : styles.searchBarUnclicked}>
-        {/* search Icon */}
         <Image source={Images.searchIcon} style={styles.searchIcon} />
-        {/* Input field */}
         <TextInput
           style={styles.input}
           placeholder="Search for New"
@@ -27,14 +32,12 @@ const SearchBar = ({clicked, searchWord, setSearchWord, setClicked}) => {
             setClicked(true);
           }}
         />
-        {/* cross Icon, depending on whether the search bar is clicked or not */}
         {clicked && (
           <Pressable onPress={() => setSearchWord('')}>
             <Image source={Images.crossIcon} style={styles.searchIcon} />
           </Pressable>
         )}
       </View>
-      {/* cancel button, depending on whether the search bar is clicked or not */}
       {clicked && (
         <View>
           <Button

@@ -1,8 +1,9 @@
 import {Image, TouchableWithoutFeedback, Text, View} from 'react-native';
 import React from 'react';
-import {NavigationScreens, NewItemTileModel} from '../../Types';
+import {NavigationScreens} from '../../Constants';
 import styles from './style';
 import {useNavigation} from '@react-navigation/native';
+import {NewItemTileModel} from '../../Types';
 
 interface Props {
   item: {newsData: NewItemTileModel};

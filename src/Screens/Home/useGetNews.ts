@@ -1,6 +1,6 @@
 import {useMemo} from 'react';
 import {AxiosClient, useGetHandler} from '../../Service';
-import {DomainConstants} from '../../Types';
+import {DomainConstants} from '../../Constants';
 
 const useGetNews = (
   successCallback?: (data: any) => void,

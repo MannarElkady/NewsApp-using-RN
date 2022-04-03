@@ -8,7 +8,7 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import Navigation from './src/Navigation';
-import {Provider} from 'react-redux';
+import {Provider as ReduxProvider} from 'react-redux';
 import stores from './src/Redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
 
@@ -16,11 +16,11 @@ const App = () => {
   let {store, persistor} = stores();
   return (
     <SafeAreaView style={styles.Container}>
-      <Provider store={store}>
+      <ReduxProvider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Navigation />
         </PersistGate>
-      </Provider>
+      </ReduxProvider>
     </SafeAreaView>
   );
 };

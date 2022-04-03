@@ -6,6 +6,7 @@ import axios, {
 
 let CancelToken: CancelTokenStatic;
 var cancelSource: CancelTokenSource;
+
 const getData = async (axiosClient: AxiosInstance, url: string) => {
   CancelToken = axios.CancelToken;
   cancelSource = CancelToken.source();

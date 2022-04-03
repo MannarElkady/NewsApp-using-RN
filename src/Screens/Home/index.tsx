@@ -6,7 +6,7 @@ import ServiceFailedComponent from '../../Component/ServiceFailedComponent';
 import {useAppSelector} from '../../Redux/store';
 
 interface Props {
-  fetchDataStatus: string | null;
+  fetchDataStatus: string | (() => void) | null;
   style: any;
   refreshNews: any;
   refreshStatus: any;
