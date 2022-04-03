@@ -1,11 +1,17 @@
-import {Image, TouchableWithoutFeedback, Text, View} from 'react-native';
+import {
+  Image,
+  TouchableWithoutFeedback,
+  Text,
+  View,
+  Linking,
+} from 'react-native';
 import React from 'react';
 import {NavigationScreens, NewItemTileModel} from '../../Types';
 import styles from './style';
 import {useNavigation} from '@react-navigation/native';
 
 interface Props {
-  item: NewItemTileModel;
+  item: {newsData: NewItemTileModel};
 }
 
 const Item = ({item}: Props) => {
@@ -14,7 +20,9 @@ const Item = ({item}: Props) => {
     <TouchableWithoutFeedback
       key={item.index}
       onPress={() => {
-        navigation.navigate(NavigationScreens.detailsPage, item.item);
+        navigation.navigate(NavigationScreens.detailsPage, {
+          itemID: item.index,
+        });
       }}>
       <View style={styles.itemContainer}>
         <Image

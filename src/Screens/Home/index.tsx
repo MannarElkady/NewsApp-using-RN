@@ -6,7 +6,7 @@ import ServiceFailedComponent from '../../Component/ServiceFailedComponent';
 import {useAppSelector} from '../../Redux/store';
 
 interface Props {
-  status: string | null;
+  fetchDataStatus: string | null;
   style: any;
   refreshNews: any;
   refreshStatus: any;
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Home: React.FC<Props> = ({
-  status,
+  fetchDataStatus,
   style,
   refreshNews,
   refreshStatus,
@@ -26,9 +26,9 @@ const Home: React.FC<Props> = ({
   const [clicked, setClicked] = useState(false);
   return (
     <View style={style}>
-      {status === 'loading' ? (
+      {fetchDataStatus === 'loading' ? (
         <ActivityIndicator style={styles.indicator} />
-      ) : status === 'success' ? (
+      ) : fetchDataStatus === 'success' ? (
         <View>
           <SearchBar
             clicked={clicked}

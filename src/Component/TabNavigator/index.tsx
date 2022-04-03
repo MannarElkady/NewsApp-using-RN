@@ -15,17 +15,22 @@ const TabNavigator = () => {
   };
   const [shouldRefresh, setShouldRefresh] = useState(false);
   let dispatch = useAppDispatch();
-  console.log(useAppSelector(state => state.newsFeedReducer.data));
 
-  //save news data to redux
+  let rehydratedVal = useAppSelector(state => state._persist.rehydrated);
+  console.log('====================================');
+  console.log(rehydratedVal);
+  console.log('====================================');
+  //save news state to redux
   const successCallback = (data: any) => {
-    dispatch(setNews(data.articles));
+    let newsData = data.articles;
+    dispatch(setNews(newsData));
     setShouldRefresh(false);
   };
+
   const [status, refetch] = useGetNews(successCallback);
   const tabsViews = [
     <Home
-      status={status}
+      fetchDataStatus={status}
       style={styles.pageStyle}
       refreshNews={refetch}
       refreshStatus={shouldRefresh}
