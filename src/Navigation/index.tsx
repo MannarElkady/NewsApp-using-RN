@@ -1,14 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import NewsDetails from '../Component/NewsDetails';
 import TabNavigator from '../Component/TabNavigator';
-import {NavigationScreens} from '../Types';
+import {appPrefixes, NavigationScreens} from '../Types';
+import NewsDetails from '../Component/NewsDetails';
+import {ActivityIndicator} from 'react-native';
 
 const Navigation = () => {
   const MainStack = createNativeStackNavigator();
+  const linking = {
+    prefixes: appPrefixes,
+    config: {
+      screens: {
+        DetailsPage: {
+          path: 'details/:itemID',
+          parse: {
+            itemID: itemID => `${itemID}`,
+          },
+        },
+      },
+    },
+  };
+
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      linking={linking}
+      fallback={<ActivityIndicator color="blue" size="large" />}>
       <MainStack.Navigator>
         <MainStack.Screen
           name={NavigationScreens.TabNavigator}

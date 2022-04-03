@@ -1,3 +1,6 @@
+export const appPrefixes = ['mynewsapp://', 'https://mynewsapp.com'];
+export const newsDetailsTitle = 'details';
+
 export const DomainConstants = Object.freeze({
   baseURL: 'https://newsapi.org/',
   postsURL: 'v2/everything',
