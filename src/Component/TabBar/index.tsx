@@ -17,7 +17,7 @@ const TabBar: React.FC<Props> = ({tabBarItems, didSelectTabIndex}) => {
   return (
     <View style={styles.tabBarContainer}>
       {tabBarItems.map((item: any, index: number) => (
-        <View style={styles.tabBarItem(selectedIndex, index)}>
+        <View key={index} style={styles.tabBarItem(selectedIndex, index)}>
           <Pressable
             onPress={() => {
               setSelectedIndex(index);
