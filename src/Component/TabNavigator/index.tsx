@@ -16,10 +16,6 @@ const TabNavigator = () => {
   const [shouldRefresh, setShouldRefresh] = useState(false);
   let dispatch = useAppDispatch();
 
-  let rehydratedVal = useAppSelector(state => state._persist.rehydrated);
-  console.log('====================================');
-  console.log(rehydratedVal);
-  console.log('====================================');
   //save news state to redux
   const successCallback = (data: any) => {
     let newsData = data.articles;

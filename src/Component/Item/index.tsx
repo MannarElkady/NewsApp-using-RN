@@ -1,10 +1,4 @@
-import {
-  Image,
-  TouchableWithoutFeedback,
-  Text,
-  View,
-  Linking,
-} from 'react-native';
+import {Image, TouchableWithoutFeedback, Text, View} from 'react-native';
 import React from 'react';
 import {NavigationScreens, NewItemTileModel} from '../../Types';
 import styles from './style';
