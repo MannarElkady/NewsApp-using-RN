@@ -10,8 +10,8 @@ import {appPrefixes, NavigationScreens} from '../Constants';
 import NewsDetails from '../Component/NewsDetails';
 import {ActivityIndicator} from 'react-native';
 import {useAppDispatch, useAppSelector} from '../Redux/store';
-import useColorScheme from '../Component/Theming/useColorSchema';
-import {setAppMode} from '../Component/Theming';
+import useColorScheme from '../Theming/useColorSchema';
+import {setAppMode} from '../Theming';
 
 const Navigation = () => {
   let dispatch = useAppDispatch();

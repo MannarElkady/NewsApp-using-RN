@@ -1,7 +1,7 @@
 import {Switch, Text, View} from 'react-native';
 import React from 'react';
 import {useAppDispatch, useAppSelector} from '../../Redux/store';
-import {handleAutoMode, handleInAppMode} from '../../Component/Theming';
+import {handleAutoMode, handleInAppMode} from '../../Theming';
 import styles from './style';
 
 const Setting = () => {
