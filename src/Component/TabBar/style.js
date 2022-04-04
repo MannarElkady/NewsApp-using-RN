@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tabBarContainer: {
-    flex: 1,
+    height: '100%',
     bottom: 0,
     marginTop: 10,
     position: 'absolute',
@@ -16,13 +16,26 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     backgroundColor: 'white',
   },
-  tabBarItem: (selectedIndex, index) => ({
+
+  darkTabBarContainer: {
+    height: '100%',
+    bottom: 0,
+    marginTop: 10,
+    position: 'absolute',
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'flex-end',
+    backgroundColor: 'black',
+  },
+
+  tabBarItem: (selectedIndex, index, darkMode) => ({
     borderBottomWidth: selectedIndex === index ? 2 : 0,
-    borderColor: 'grey',
+    borderColor: darkMode ? 'green' : 'grey',
   }),
 
-  tabBarItemText: (selectedIndex, index) => ({
-    color: selectedIndex === index ? 'black' : 'grey',
+  tabBarItemText: (selectedIndex, index, darkMode) => ({
+    color: selectedIndex === index ? (darkMode ? 'green' : 'black') : 'grey',
     fontSize: 21,
     fontWeight: selectedIndex === index ? 'bold' : '100',
   }),

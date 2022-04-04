@@ -5,19 +5,29 @@ import styles from './style';
 export type Props = {
   tabBarItems: {name: string; icon: any}[];
   didSelectTabIndex: (index: React.SetStateAction<number>) => void;
+  darkMode: boolean;
 };
 
-const TabBar: React.FC<Props> = ({tabBarItems, didSelectTabIndex}) => {
+const TabBar: React.FC<Props> = ({
+  tabBarItems,
+  didSelectTabIndex,
+  darkMode,
+}) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const textBarComponent = (item: any, index: Number) => (
-    <Text style={styles.tabBarItemText(selectedIndex, index)}>{item.name}</Text>
+    <Text style={styles.tabBarItemText(selectedIndex, index, darkMode)}>
+      {item.name}
+    </Text>
   );
 
   return (
-    <View style={styles.tabBarContainer}>
+    <View
+      style={darkMode ? styles.darkTabBarContainer : styles.tabBarContainer}>
       {tabBarItems.map((item: any, index: number) => (
-        <View key={index} style={styles.tabBarItem(selectedIndex, index)}>
+        <View
+          key={index}
+          style={styles.tabBarItem(selectedIndex, index, darkMode)}>
           <Pressable
             onPress={() => {
               setSelectedIndex(index);

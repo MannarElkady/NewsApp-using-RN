@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     width: '90%',
   },
+  darkInput: {
+    fontSize: 20,
+    marginLeft: 10,
+    width: '90%',
+    color: 'green',
+  },
   searchIcon: {marginLeft: 1, width: 20, height: 20, resizeMode: 'contain'},
 });
 

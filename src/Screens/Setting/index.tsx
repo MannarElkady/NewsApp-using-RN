@@ -19,8 +19,9 @@ const Setting = () => {
 
   return (
     <View style={styles.settingContainer}>
+      <Text style={styles.textHeaderStyle}>Theming Settings</Text>
       <View style={styles.toggleOption}>
-        <Text style={styles.textStyle}> Auto </Text>
+        <Text style={styles.textStyle}> Auto Theming</Text>
         <Switch
           trackColor={{false: '#767577', true: '#81b0ff'}}
           thumbColor={isAutoMode ? '#f5dd4b' : '#f4f3f4'}
@@ -39,6 +40,7 @@ const Setting = () => {
           value={isDarkMode}
         />
       </View>
+      <Text style={styles.textHeaderStyle}>Language Settings</Text>
     </View>
   );
 };

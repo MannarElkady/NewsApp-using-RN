@@ -15,17 +15,25 @@ interface Props {
   searchWord: string;
   setSearchWord: Dispatch<SetStateAction<string>>;
   setClicked: Dispatch<SetStateAction<boolean>>;
+  darkMode: boolean;
 }
 
-const SearchBar = ({clicked, searchWord, setSearchWord, setClicked}: Props) => {
+const SearchBar = ({
+  clicked,
+  searchWord,
+  setSearchWord,
+  setClicked,
+  darkMode,
+}: Props) => {
   return (
     <View style={styles.container}>
       <View
         style={clicked ? styles.searchBarClicked : styles.searchBarUnclicked}>
         <Image source={Images.searchIcon} style={styles.searchIcon} />
         <TextInput
-          style={styles.input}
+          style={darkMode ? styles.darkInput : styles.input}
           placeholder="Search for New"
+          placeholderTextColor={darkMode ? 'green' : 'grey'}
           value={searchWord}
           onChangeText={setSearchWord}
           onFocus={() => {

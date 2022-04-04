@@ -11,6 +11,7 @@ interface Props {
   refreshNews: any;
   refreshStatus: any;
   setRefreshStatus: any;
+  darkMode: boolean;
 }
 
 const Home: React.FC<Props> = ({
@@ -19,6 +20,7 @@ const Home: React.FC<Props> = ({
   refreshNews,
   refreshStatus,
   setRefreshStatus,
+  darkMode,
 }) => {
   // get data from store
   let savedDataState = useAppSelector(state => state.newsFeedReducer.data);
@@ -35,15 +37,16 @@ const Home: React.FC<Props> = ({
             setClicked={setClicked}
             searchWord={searchPhrase}
             setSearchWord={setSearchPhrase}
+            darkMode={darkMode}
           />
           <NewsList
             data={savedDataState.filter(item =>
               item.title.toLowerCase().includes(searchPhrase.toLowerCase()),
             )}
-            style={{}}
             refreshGetNews={refreshNews}
             refreshStatus={refreshStatus}
             setRefreshStatus={setRefreshStatus}
+            style={{}}
           />
         </View>
       ) : (
