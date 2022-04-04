@@ -6,10 +6,12 @@ import styles from './style';
 import Images from '../../Images';
 import useGetNews from '../../Screens/Home/useGetNews';
 import {setNews} from '../../Redux/Slicers/NewsListReducer';
-import {useAppDispatch} from '../../Redux/store';
+import {useAppDispatch, useAppSelector} from '../../Redux/store';
 
 const TabNavigator = () => {
   const [selectedTab, setSelectedTab] = useState(0);
+  const isDarkMode = useAppSelector(state => state.themingReducer.isDarkTheme);
+
   const didSelectTabIndex = (index: React.SetStateAction<number>) => {
     setSelectedTab(index);
   };
@@ -26,6 +28,7 @@ const TabNavigator = () => {
   const [status, refetch] = useGetNews(successCallback);
   const tabsViews = [
     <Home
+      darkMode={isDarkMode}
       fetchDataStatus={status}
       style={styles.pageStyle}
       refreshNews={refetch}
@@ -40,10 +43,19 @@ const TabNavigator = () => {
       <View style={styles.barStyle}>
         {
           <TabBar
+            darkMode={isDarkMode}
             key={'tabBar'}
             tabBarItems={[
-              {name: 'NewsFeed', icon: Images.newsFeedIcon},
-              {name: 'Setting', icon: Images.settingIcon},
+              {
+                name: 'NewsFeed',
+                icon: isDarkMode
+                  ? Images.newsFeedDarkIcon
+                  : Images.newsFeedIcon,
+              },
+              {
+                name: 'Setting',
+                icon: isDarkMode ? Images.settingDarkIcon : Images.settingIcon,
+              },
             ]}
             didSelectTabIndex={didSelectTabIndex}
           />

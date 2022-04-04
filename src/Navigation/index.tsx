@@ -1,12 +1,28 @@
-import React, {useEffect} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TabNavigator from '../Component/TabNavigator';
-import {appPrefixes, NavigationScreens} from '../Types';
+import {appPrefixes, NavigationScreens} from '../Constants';
 import NewsDetails from '../Component/NewsDetails';
 import {ActivityIndicator} from 'react-native';
+import {useAppDispatch, useAppSelector} from '../Redux/store';
+import useColorScheme from '../Component/Theming/useColorSchema';
+import {setAppMode} from '../Component/Theming';
 
 const Navigation = () => {
+  let dispatch = useAppDispatch();
+  const isAutoMode = useAppSelector(state => state.themingReducer.isAutoTheme);
+  const isDarkMode = useAppSelector(state => state.themingReducer.isDarkTheme);
+
+  let autoMode = useColorScheme(500);
+  if (isAutoMode) {
+    setAppMode(dispatch, autoMode);
+  }
+
   const MainStack = createNativeStackNavigator();
   const linking = {
     prefixes: appPrefixes,
@@ -15,7 +31,7 @@ const Navigation = () => {
         DetailsPage: {
           path: 'details/:itemID',
           parse: {
-            itemID: itemID => `${itemID}`,
+            itemID: (itemID: Number) => `${itemID}`,
           },
         },
       },
@@ -24,6 +40,7 @@ const Navigation = () => {
 
   return (
     <NavigationContainer
+      theme={isDarkMode ? DarkTheme : DefaultTheme}
       linking={linking}
       fallback={<ActivityIndicator color="blue" size="large" />}>
       <MainStack.Navigator>
@@ -35,6 +52,11 @@ const Navigation = () => {
         <MainStack.Screen
           name={NavigationScreens.detailsPage}
           component={NewsDetails}
+          options={{
+            headerStyle: {
+              backgroundColor: isDarkMode ? 'grey' : 'white', //Set Header color
+            },
+          }}
         />
       </MainStack.Navigator>
     </NavigationContainer>
