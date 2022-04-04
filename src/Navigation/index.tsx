@@ -18,7 +18,7 @@ const Navigation = () => {
   const isAutoMode = useAppSelector(state => state.themingReducer.isAutoTheme);
   const isDarkMode = useAppSelector(state => state.themingReducer.isDarkTheme);
 
-  let autoMode = useColorScheme(500);
+  let autoMode = useColorScheme();
   if (isAutoMode) {
     setAppMode(dispatch, autoMode);
   }
