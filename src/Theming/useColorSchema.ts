@@ -1,19 +1,21 @@
-import {Appearance, ColorSchemeName} from 'react-native';
+import {Appearance, ColorSchemeName, NativeEventSubscription} from 'react-native';
 import {useEffect, useRef, useState} from 'react';
 
 export default function useColorScheme(
-  delay = 500,
+  delay = 0,
 ): NonNullable<ColorSchemeName> {
   const [colorScheme, setColorScheme] = useState(Appearance.getColorScheme());
+  let apperanceListner: NativeEventSubscription
 
   let timeout = useRef<NodeJS.Timeout | null>(null).current;
 
   useEffect(() => {
-    Appearance.addChangeListener(onColorSchemeChange);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    apperanceListner = Appearance.addChangeListener(onColorSchemeChange);
 
     return () => {
       resetCurrentTimeout();
-      Appearance.removeChangeListener(onColorSchemeChange);
+      apperanceListner.remove();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
