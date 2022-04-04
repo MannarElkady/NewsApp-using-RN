@@ -1,11 +1,15 @@
-import {Appearance, ColorSchemeName, NativeEventSubscription} from 'react-native';
+import {
+  Appearance,
+  ColorSchemeName,
+  NativeEventSubscription,
+} from 'react-native';
 import {useEffect, useRef, useState} from 'react';
 
 export default function useColorScheme(
   delay = 0,
 ): NonNullable<ColorSchemeName> {
   const [colorScheme, setColorScheme] = useState(Appearance.getColorScheme());
-  let apperanceListner: NativeEventSubscription
+  let apperanceListner: NativeEventSubscription;
 
   let timeout = useRef<NodeJS.Timeout | null>(null).current;
 
