@@ -12,11 +12,13 @@ import {ActivityIndicator} from 'react-native';
 import {useAppDispatch, useAppSelector} from '../Redux/store';
 import useColorScheme from '../Theming/useColorSchema';
 import {setAppMode} from '../Theming';
+import usePreferredLanguage from '../Languages/usePreferredLanguage';
 
 const Navigation = () => {
-  let dispatch = useAppDispatch();
+  usePreferredLanguage(); //set preferred language
   const isAutoMode = useAppSelector(state => state.themingReducer.isAutoTheme);
   const isDarkMode = useAppSelector(state => state.themingReducer.isDarkTheme);
+  let dispatch = useAppDispatch();
 
   let autoMode = useColorScheme();
   if (isAutoMode) {

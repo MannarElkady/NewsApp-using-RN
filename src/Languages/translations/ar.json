@@ -1,11 +1,10 @@
 {
-    "searchHint": "Search For New",
-    "newsfeedTabItem": "News Feed",
-    "settingTabItem": "Setting",
-    "cancelBtn": "cancel",
-    "themeSettingTitle": "Theming Setting",
-    "autoThemeingToggle": "Auto",
-    "darkModeToggle": "Dark Mode",
-    "languageSettingTitle": "Language Setting"
-
+    "searchHint": "البحث عن خبر...",
+    "newsfeedTabItem": "الاخبار",
+    "settingTabItem": "الاعدادات",
+    "cancelBtn": "الغاء",
+    "themeSettingTitle": "اعدادات السيم",
+    "autoThemeingToggle": "اتوماتيك",
+    "darkModeToggle": "نظام الظلام",
+    "languageSettingTitle": "اعدادات اللغة"
 }

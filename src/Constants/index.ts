@@ -12,3 +12,8 @@ export const NavigationScreens = Object.freeze({
   detailsPage: 'DetailsPage',
   TabNavigator: 'TabNavigator',
 });
+
+export const SupportedLanguages = {
+  en: 'en',
+  ar: 'ar',
+};

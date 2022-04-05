@@ -7,8 +7,10 @@ import Images from '../../Images';
 import useGetNews from '../../Screens/Home/useGetNews';
 import {setNews} from '../../Redux/Slicers/NewsListReducer';
 import {useAppDispatch, useAppSelector} from '../../Redux/store';
+import {useTranslation} from 'react-i18next';
 
 const TabNavigator = () => {
+  const {t} = useTranslation();
   const [selectedTab, setSelectedTab] = useState(0);
   const isDarkMode = useAppSelector(state => state.themingReducer.isDarkTheme);
 
@@ -47,13 +49,13 @@ const TabNavigator = () => {
             key={'tabBar'}
             tabBarItems={[
               {
-                name: 'NewsFeed',
+                name: t('newsfeedTabItem'),
                 icon: isDarkMode
                   ? Images.newsFeedDarkIcon
                   : Images.newsFeedIcon,
               },
               {
-                name: 'Setting',
+                name: t('settingTabItem'),
                 icon: isDarkMode ? Images.settingDarkIcon : Images.settingIcon,
               },
             ]}

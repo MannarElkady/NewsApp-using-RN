@@ -5,7 +5,7 @@ import React from 'react';
 const ServiceFailedComponent = () => {
   return (
     <Text style={styles.container}>
-      Service Failed Service Failed Service FailedService Failed
+      Service Failed Service Failed Service Failed
     </Text>
   );
 };

@@ -9,6 +9,7 @@ import {
   Pressable,
 } from 'react-native';
 import Images from '../../Images';
+import {useTranslation} from 'react-i18next';
 
 interface Props {
   clicked: boolean;
@@ -25,6 +26,7 @@ const SearchBar = ({
   setClicked,
   darkMode,
 }: Props) => {
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <View
@@ -32,7 +34,7 @@ const SearchBar = ({
         <Image source={Images.searchIcon} style={styles.searchIcon} />
         <TextInput
           style={darkMode ? styles.darkInput : styles.input}
-          placeholder="Search for New"
+          placeholder={t('searchHint')}
           placeholderTextColor={darkMode ? 'green' : 'grey'}
           value={searchWord}
           onChangeText={setSearchWord}

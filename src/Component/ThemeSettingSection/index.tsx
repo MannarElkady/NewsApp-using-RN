@@ -1,10 +1,12 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {View, Text, Switch} from 'react-native';
 import {useAppDispatch, useAppSelector} from '../../Redux/store';
 import {handleAutoMode, handleInAppMode} from '../../Theming';
 import styles from './style';
 
 const ThemeSettingSection = () => {
+  const {t} = useTranslation();
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector(state => state.themingReducer.isDarkTheme);
   const isAutoMode = useAppSelector(state => state.themingReducer.isAutoTheme);
@@ -18,9 +20,9 @@ const ThemeSettingSection = () => {
   };
   return (
     <View style={styles.settingContainer}>
-      <Text style={styles.textHeaderStyle}>Theming Settings</Text>
+      <Text style={styles.textHeaderStyle}>{t('themeSettingTitle')}</Text>
       <View style={styles.toggleOption}>
-        <Text style={styles.textStyle}> Auto Theming</Text>
+        <Text style={styles.textStyle}>{t('autoThemeingToggle')}</Text>
         <Switch
           trackColor={{false: '#767577', true: '#81b0ff'}}
           thumbColor={isAutoMode ? '#f5dd4b' : '#f4f3f4'}
@@ -30,7 +32,7 @@ const ThemeSettingSection = () => {
         />
       </View>
       <View style={styles.toggleOption}>
-        <Text style={styles.textStyle}> Dark Mode </Text>
+        <Text style={styles.textStyle}>{t('darkModeToggle')}</Text>
         <Switch
           trackColor={{false: '#767577', true: '#81b0ff'}}
           thumbColor={isDarkMode ? '#f5dd4b' : '#f4f3f4'}
