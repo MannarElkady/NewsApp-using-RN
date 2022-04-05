@@ -15,15 +15,15 @@ import {setAppMode} from '../Theming';
 import usePreferredLanguage from '../Languages/usePreferredLanguage';
 
 const Navigation = () => {
-  usePreferredLanguage(); //set preferred language
+  let dispatch = useAppDispatch();
   const isAutoMode = useAppSelector(state => state.themingReducer.isAutoTheme);
   const isDarkMode = useAppSelector(state => state.themingReducer.isDarkTheme);
-  let dispatch = useAppDispatch();
 
   let autoMode = useColorScheme();
   if (isAutoMode) {
     setAppMode(dispatch, autoMode);
   }
+  usePreferredLanguage(); //set preferred language
 
   const MainStack = createNativeStackNavigator();
   const linking = {
