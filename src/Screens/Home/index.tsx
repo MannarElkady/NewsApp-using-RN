@@ -43,6 +43,7 @@ const Home: React.FC<Props> = ({
             data={savedDataState.filter(item =>
               item.title.toLowerCase().includes(searchPhrase.toLowerCase()),
             )}
+            darkMode = {darkMode}
             refreshGetNews={refreshNews}
             refreshStatus={refreshStatus}
             setRefreshStatus={setRefreshStatus}

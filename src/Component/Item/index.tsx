@@ -7,16 +7,17 @@ import {NewItemTileModel} from '../../Types';
 
 interface Props {
   item: {newsData: NewItemTileModel};
+  darkMode: boolean;
 }
 
-const Item = ({item}: Props) => {
+const Item = ({item, darkMode}: Props) => {
   let navigation = useNavigation();
   return (
     <TouchableWithoutFeedback
       key={item.index}
       onPress={() => {
         navigation.navigate(NavigationScreens.detailsPage, {
-          itemID: item.index,
+          itemID: item.index, darkMode: darkMode,
         });
       }}>
       <View style={styles.itemContainer}>
@@ -24,7 +25,7 @@ const Item = ({item}: Props) => {
           source={{uri: item.item.urlToImage}}
           style={styles.imageContainer}
         />
-        <Text style={styles.textstyle}>{item.item.title}</Text>
+        <Text style={darkMode ? styles.darkModeTextstyle : styles.textstyle}>{item.item.title}</Text>
       </View>
     </TouchableWithoutFeedback>
   );

@@ -4,18 +4,24 @@ import styles from './style';
 import {getPresistedItem, useAppSelector} from '../../Redux/store';
 
 const NewsDetails = ({route}: {route: any}) => {
-  let {itemID} = route.params;
+  let {itemID, darkMode} = route.params;
   const dataList = useAppSelector(state => state.newsFeedReducer.data);
   let item = getPresistedItem(dataList, itemID);
   return (
     <View>
       <Image style={styles.imageContainer} source={{uri: item.urlToImage}} />
       <View style={styles.textsContainer}>
-        <Text>{item.title}</Text>
-        <Text>{item.author}</Text>
-        <Text>{item.publishedAt}</Text>
-        <Text>{item.content}</Text>
-        <Text>{item.description}</Text>
+        <Text style={{color: darkMode ? 'white' : 'black'}}>{item.title}</Text>
+        <Text style={{color: darkMode ? 'white' : 'black'}}>{item.author}</Text>
+        <Text style={{color: darkMode ? 'white' : 'black'}}>
+          {item.publishedAt}
+        </Text>
+        <Text style={{color: darkMode ? 'white' : 'black'}}>
+          {item.content}
+        </Text>
+        <Text style={{color: darkMode ? 'white' : 'black'}}>
+          {item.description}
+        </Text>
       </View>
     </View>
   );

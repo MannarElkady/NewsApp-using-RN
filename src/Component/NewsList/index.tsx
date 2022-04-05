@@ -9,6 +9,7 @@ interface Props {
   refreshStatus: any;
   setRefreshStatus: Dispatch<SetStateAction<boolean>>;
   refreshGetNews: any;
+  darkMode: boolean;
 }
 
 const NewsList = ({
@@ -17,6 +18,7 @@ const NewsList = ({
   refreshStatus,
   setRefreshStatus,
   refreshGetNews,
+  darkMode,
 }: Props) => {
   const refreshAction = () => {
     setRefreshStatus(true);
@@ -33,7 +35,9 @@ const NewsList = ({
           />
         }
         data={data}
-        renderItem={(item: NewItemTileModel) => <Item item={item} />}
+        renderItem={(item: NewItemTileModel) => (
+          <Item item={item} darkMode={darkMode} />
+        )}
         keyExtractor={item => item.title}
       />
     </View>

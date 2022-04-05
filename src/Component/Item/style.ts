@@ -31,6 +31,18 @@ const styles = StyleSheet.create({
     bottom: 0,
     padding: 5,
   },
+  darkModeTextstyle: {
+    color: 'green',
+    backgroundColor: 'white',
+    opacity: 0.7,
+    fontSize: 21,
+    zIndex: 2,
+    elevation: 2,
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+    padding: 5,
+  },
 });
 
 export default styles;
