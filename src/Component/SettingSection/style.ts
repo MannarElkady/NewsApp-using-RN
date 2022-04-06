@@ -21,8 +21,8 @@ const styles = StyleSheet.create<any>({
     flexDirection: 'row',
     flexGrow: 2,
   },
-  textStyle: {fontSize: 20},
-  textHeaderStyle: {fontSize: 21, margin: 20, flexGrow: 0.5},
+  textStyle: {fontSize: 20, color: 'black'},
+  textHeaderStyle: {fontSize: 21, margin: 20, flexGrow: 0.5, color: 'black'},
 });
 
 export default styles;

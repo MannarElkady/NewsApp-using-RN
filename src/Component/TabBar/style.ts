@@ -14,7 +14,6 @@ const styles = StyleSheet.create<any>({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'flex-end',
-    backgroundColor: 'white',
   },
 
   darkTabBarContainer: {
