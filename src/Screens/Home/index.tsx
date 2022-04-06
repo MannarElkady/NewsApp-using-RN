@@ -47,7 +47,7 @@ const Home: React.FC<Props> = ({
             refreshGetNews={refreshNews}
             refreshStatus={refreshStatus}
             setRefreshStatus={setRefreshStatus}
-            style={{}}
+            style={{height: '90%'}}
           />
         </View>
       ) : (
