@@ -4,7 +4,9 @@
     "settingTabItem": "الاعدادات",
     "cancelBtn": "الغاء",
     "themeSettingTitle": "اعدادات السيم",
-    "autoThemeingToggle": "اتوماتيك",
+    "autoThemeingToggle": "تلقائي",
     "darkModeToggle": "نظام الظلام",
-    "languageSettingTitle": "اعدادات اللغة"
+    "languageSettingTitle": "اعدادات اللغة",
+    "autoLanguageToggle": "اللغه تلقائي",
+    "languageModeToggle": "اللغة اختياري"
 }

@@ -6,6 +6,7 @@
     "themeSettingTitle": "Theming Setting",
     "autoThemeingToggle": "Auto",
     "darkModeToggle": "Dark Mode",
-    "languageSettingTitle": "Language Setting"
-
+    "languageSettingTitle": "Language Setting",
+    "autoLanguageToggle": "Auto",
+    "languageModeToggle": "Language Mode"
 }

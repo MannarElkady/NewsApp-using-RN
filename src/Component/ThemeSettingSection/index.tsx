@@ -1,9 +1,8 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {View, Text, Switch} from 'react-native';
 import {useAppDispatch, useAppSelector} from '../../Redux/store';
 import {handleAutoMode, handleInAppMode} from '../../Theming';
-import styles from './style';
+import SettingSection from '../SettingSection';
 
 const ThemeSettingSection = () => {
   const {t} = useTranslation();
@@ -19,29 +18,15 @@ const ThemeSettingSection = () => {
     handleInAppMode(dispatch, value);
   };
   return (
-    <View style={styles.settingContainer}>
-      <Text style={styles.textHeaderStyle}>{t('themeSettingTitle')}</Text>
-      <View style={styles.toggleOption}>
-        <Text style={styles.textStyle}>{t('autoThemeingToggle')}</Text>
-        <Switch
-          trackColor={{false: '#767577', true: '#81b0ff'}}
-          thumbColor={isAutoMode ? '#f5dd4b' : '#f4f3f4'}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleIsAuto}
-          value={isAutoMode}
-        />
-      </View>
-      <View style={styles.toggleOption}>
-        <Text style={styles.textStyle}>{t('darkModeToggle')}</Text>
-        <Switch
-          trackColor={{false: '#767577', true: '#81b0ff'}}
-          thumbColor={isDarkMode ? '#f5dd4b' : '#f4f3f4'}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleIsDarkMode}
-          value={isDarkMode}
-        />
-      </View>
-    </View>
+    <SettingSection
+      themeTitleSetting={t('themeSettingTitle')}
+      autoToggleText={t('autoThemeingToggle')}
+      isAutoForSettingSection={isAutoMode}
+      toggleIsAuto={toggleIsAuto}
+      optionToggleText={t('darkModeToggle')}
+      isOptionEnabled={isDarkMode}
+      toggleIsOption={toggleIsDarkMode}
+    />
   );
 };
 
