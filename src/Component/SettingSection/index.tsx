@@ -1,6 +1,7 @@
 import {Switch, Text, View} from 'react-native';
 import React from 'react';
 import style from './style';
+import {useAppSelector} from '../../Redux/store';
 
 interface Props {
   themeTitleSetting: string;
@@ -20,8 +21,10 @@ const SettingSection = ({
   isOptionEnabled,
   toggleIsOption,
 }: Props) => {
+  const isDarkMode = useAppSelector(state => state.themingReducer.isDarkTheme);
   return (
-    <View style={style.settingContainer}>
+    <View
+      style={isDarkMode ? style.settingContainerDark : style.settingContainer}>
       <Text style={style.textHeaderStyle}>{themeTitleSetting}</Text>
       <View style={style.toggleOption}>
         <Text style={style.textStyle}>{autoToggleText}</Text>

@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const styles = StyleSheet.create({
   settingContainer: {
@@ -10,8 +9,18 @@ const styles = StyleSheet.create({
     flex: 0.5,
     margin: 10,
   },
-  textStyle: {fontSize: 20},
-  textHeaderStyle: {fontSize: 21, margin: 20, flexGrow: 0.5},
+  textStyle: {
+    alignSelf: 'center',
+    fontSize: 24,
+    marginBottom: 10,
+    color: 'black',
+  },
+  darkTextStyle: {
+    alignSelf: 'center',
+    fontSize: 24,
+    marginBottom: 10,
+    color: 'white',
+  },
 });
 
 export default styles;

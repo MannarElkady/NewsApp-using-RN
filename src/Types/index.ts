@@ -5,6 +5,7 @@ export type NewItemTileModel = {
   content: string;
   publishedAt: string;
   description: string;
+  url: string;
 };
 
 export type NewsDataResponse = {

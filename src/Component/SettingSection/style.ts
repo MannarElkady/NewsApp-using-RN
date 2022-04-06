@@ -13,6 +13,17 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 10, height: 10},
     shadowOpacity: 0.3,
   },
+  settingContainerDark: {
+    backgroundColor: 'white',
+    borderRadius: 20,
+    width: '85%',
+    height: '100%',
+    alignSelf: 'center',
+    justifyContent: 'space-around',
+    shadowColor: Colors.white,
+    shadowOffset: {width: 10, height: 10},
+    shadowOpacity: 0.3,
+  },
   toggleOption: {
     flex: 1,
     justifyContent: 'space-evenly',
