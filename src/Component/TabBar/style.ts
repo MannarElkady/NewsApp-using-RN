@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<any>({
   selectedTabBar: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -29,12 +29,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
 
-  tabBarItem: (selectedIndex, index, darkMode) => ({
+  tabBarItem: (selectedIndex: number, index: number, darkMode: boolean) => ({
     borderBottomWidth: selectedIndex === index ? 2 : 0,
     borderColor: darkMode ? 'green' : 'grey',
   }),
 
-  tabBarItemText: (selectedIndex, index, darkMode) => ({
+  tabBarItemText: (
+    selectedIndex: number,
+    index: number,
+    darkMode: boolean,
+  ) => ({
     color: selectedIndex === index ? (darkMode ? 'green' : 'black') : 'grey',
     fontSize: 21,
     fontWeight: selectedIndex === index ? 'bold' : '100',

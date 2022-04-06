@@ -1,4 +1,4 @@
-import {Image, Linking, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Image, Linking, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import styles from './style';
 import {getPresistedItem, useAppSelector} from '../../Redux/store';

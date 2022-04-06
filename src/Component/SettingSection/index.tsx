@@ -2,6 +2,7 @@ import {Switch, Text, View} from 'react-native';
 import React from 'react';
 import style from './style';
 import {useAppSelector} from '../../Redux/store';
+import i18next from 'i18next';
 
 interface Props {
   themeTitleSetting: string;
@@ -22,9 +23,11 @@ const SettingSection = ({
   toggleIsOption,
 }: Props) => {
   const isDarkMode = useAppSelector(state => state.themingReducer.isDarkTheme);
+  const isArabic =
+    useAppSelector(state => state.languageReducer.language) === 'ar' ||
+    i18next.language === 'ar';
   return (
-    <View
-      style={isDarkMode ? style.settingContainerDark : style.settingContainer}>
+    <View style={style.settingContainer(isDarkMode, isArabic)}>
       <Text style={style.textHeaderStyle}>{themeTitleSetting}</Text>
       <View style={style.toggleOption}>
         <Text style={style.textStyle}>{autoToggleText}</Text>
