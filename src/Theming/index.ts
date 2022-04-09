@@ -18,14 +18,10 @@ export const handleAutoMode = (dispatch: AppDispatch, enabled: boolean) => {
   }
 };
 
-const getOSMode = () => {
+export const getOSMode = () => {
   return Appearance.getColorScheme();
 };
 
 export const setAppMode = (dispatch: AppDispatch, osMode: ColorSchemeName) => {
-  if (osMode === 'dark') {
-    dispatch(setIsDarkModeTheme(true));
-  } else {
-    dispatch(setIsDarkModeTheme(false));
-  }
+  dispatch(setIsDarkModeTheme(osMode === 'dark'));
 };

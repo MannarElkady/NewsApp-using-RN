@@ -1,6 +1,7 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {setIsAuto, setLanguage} from '../../Redux/Slicers/LanguageReducer';
+import {shouldUpdateStateWithInAppLanguageSelection} from '../../Languages/usePreferredLanguage';
+import {setIsAuto} from '../../Redux/Slicers/LanguageReducer';
 import {useAppDispatch, useAppSelector} from '../../Redux/store';
 import SettingSection from '../SettingSection';
 
@@ -10,13 +11,13 @@ const LanguageSettingSection = () => {
   let currentLanguage = useAppSelector(state => state.languageReducer.language);
   let isAutoMode = useAppSelector(state => state.languageReducer.isAuto);
   const didChangeLanguage = (isEnglish: boolean) => {
-    dispatch(setIsAuto(false));
-    dispatch(setLanguage(isEnglish ? 'en' : 'ar'));
+    shouldUpdateStateWithInAppLanguageSelection(dispatch, isEnglish);
   };
 
   const didSelectAutoMode = (isAuto: boolean) => {
     dispatch(setIsAuto(isAuto));
   };
+
   return (
     <SettingSection
       themeTitleSetting={t('languageSettingTitle')}

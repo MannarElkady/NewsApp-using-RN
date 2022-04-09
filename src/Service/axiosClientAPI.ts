@@ -1,8 +1,8 @@
 import axios from 'axios';
-const AxiosClient = (baseURL: string, params: {} = {}) => {
+const AxiosClient = (baseURL: string, params: {} = {}, timeout = 30000) => {
   return axios.create({
     baseURL: baseURL,
-    timeout: 30000,
+    timeout: timeout,
     params: {
       ...params,
     },

@@ -1,7 +1,16 @@
 import i18n from './index';
 import {useEffect} from 'react';
-import {useAppSelector} from '../Redux/store';
+import {AppDispatch, useAppSelector} from '../Redux/store';
 import * as RNLocalize from 'react-native-localize';
+import {setIsAuto, setLanguage} from '../Redux/Slicers/LanguageReducer';
+
+export const shouldUpdateStateWithInAppLanguageSelection = (
+  dispatcher: AppDispatch,
+  isEnglish: boolean,
+) => {
+  dispatcher(setIsAuto(false));
+  dispatcher(setLanguage(isEnglish ? 'en' : 'ar'));
+};
 
 const usePreferredLanguage = () => {
   const isAutoLanguageMode = useAppSelector(

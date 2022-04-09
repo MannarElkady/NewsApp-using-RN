@@ -2,6 +2,7 @@ import React from 'react';
 import {
   DarkTheme,
   DefaultTheme,
+  LinkingOptions,
   NavigationContainer,
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -15,6 +16,7 @@ import {setAppMode} from '../Theming';
 import usePreferredLanguage from '../Languages/usePreferredLanguage';
 
 const Navigation = () => {
+  //set up for theming and languages
   let dispatch = useAppDispatch();
   const isAutoMode = useAppSelector(state => state.themingReducer.isAutoTheme);
   const isDarkMode = useAppSelector(state => state.themingReducer.isDarkTheme);
@@ -25,15 +27,17 @@ const Navigation = () => {
   }
   usePreferredLanguage(); //set preferred language
 
+  //create navigation stack
   const MainStack = createNativeStackNavigator();
-  const linking = {
+  //configure deeplinking
+  const linking: LinkingOptions<any> = {
     prefixes: appPrefixes,
     config: {
       screens: {
         DetailsPage: {
           path: 'details/:itemID',
           parse: {
-            itemID: (itemID: Number) => `${itemID}`,
+            itemID: (itemID: string) => `${itemID}`,
           },
         },
       },

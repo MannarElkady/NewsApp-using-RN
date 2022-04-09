@@ -4,11 +4,13 @@ import {
   NativeEventSubscription,
 } from 'react-native';
 import {useEffect, useRef, useState} from 'react';
+import {getOSMode} from '.';
 
+//to get the os preferred theme
 export default function useColorScheme(
   delay = 0,
 ): NonNullable<ColorSchemeName> {
-  const [colorScheme, setColorScheme] = useState(Appearance.getColorScheme());
+  const [colorScheme, setColorScheme] = useState(getOSMode());
   let apperanceListner: NativeEventSubscription;
 
   let timeout = useRef<NodeJS.Timeout | null>(null).current;

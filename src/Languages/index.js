@@ -3,12 +3,10 @@ import {initReactI18next} from 'react-i18next';
 import en from './translations/en.json';
 import ar from './translations/ar.json';
 import * as RNLocalize from 'react-native-localize';
-import usePreferredLanguage from './usePreferredLanguage';
 
 // this plugin could be used if
 // the app has only to respect the os prefrence,
 // could be replaced with calling of usePreferredLanguage
-
 const languageDetector = {
   type: 'languageDetector',
   async: true,

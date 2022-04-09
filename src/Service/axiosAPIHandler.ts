@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import {getData, cancelSource} from './axiosAPIMethods';
 import {AxiosInstance} from 'axios';
 
+// this layer for any error handling domain mapping
 const useGetHandler = (
   url: string,
   apiClient: AxiosInstance,
