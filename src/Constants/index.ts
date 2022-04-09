@@ -1,4 +1,4 @@
-export const appPrefixes = ['mynewsapp://', 'https://mynewsapp.com'];
+export const appPrefixes = ['mynewsapp://'];
 export const newsDetailsTitle = 'details';
 
 export const DomainConstants = Object.freeze({
